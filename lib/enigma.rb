@@ -1,3 +1,4 @@
+require './lib/generator.rb'
 require 'date'
 
 class Enigma
@@ -23,5 +24,9 @@ class Enigma
     end
 
     encrypted_message
+  end
+
+  def square_date
+    @date.delete("/")
   end
 end

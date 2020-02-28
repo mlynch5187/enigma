@@ -21,6 +21,10 @@ class EnigmaTest < MiniTest::Test
     assert_equal "270220", @enigma.stubs(:date).returns("270220")
   end
 
+  def test_date_can_be_squared
+    assert_equal 1, @enigma.square_date
+  end
+
   def test_messages_can_be_encrypted_with_a_key
     skip
     assert_equal ({:encryption => "keder ohulw", :key => "02715"}), @enigma.encrypt("hello world", "02715")

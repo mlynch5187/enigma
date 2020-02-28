@@ -6,7 +6,7 @@ class GeneratorTest < MiniTest::Test
 
   def setup
     @generator = Generator.new
-    @generator_1 = mock("Generator 1")
+    # @generator_1 = mock("Generator 1")
   end
 
   def test_generator_exist
@@ -20,12 +20,13 @@ class GeneratorTest < MiniTest::Test
   end
 
   def test_random_five_digit_number_can_be_generated
-    # @generator_1.generate_keys
+    @generator_1.generate_keys
 
-    # assert_equal [3, 4, 9, 6, 2], @generator_1.stubs(:generate_keys).returns([3, 4, 9, 6, 2])
+    assert_equal [3, 4, 9, 6, 2], @generator_1.stubs(:generate_keys).returns([3, 4, 9, 6, 2])
   end
 
   def test_keys_can_be_split
+    skip
     @generator.split_keys
 
     assert_equal [], @generator.a_key
