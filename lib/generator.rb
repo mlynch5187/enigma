@@ -2,7 +2,6 @@ class Generator
   attr_reader :letter_set, :a_key, :b_key, :c_key, :d_key
 
   def initialize()
-    # @random_keys = []
     @a_key = []
     @b_key = []
     @c_key = []
@@ -12,10 +11,6 @@ class Generator
 
   def generate_keys
     (1..9).to_a.sample(5)
-  #   5.times do
-  #     @random_keys << rand(1...9)
-  #   end
-  #   @random_keys
   end
 
   def split_keys

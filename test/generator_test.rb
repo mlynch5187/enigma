@@ -36,10 +36,3 @@ class GeneratorTest < MiniTest::Test
     # assert_equal [[3,4], [4, 9], [9, 6], [6, 2]], @generator.stubs(:split_keys).returns([[3,4], [4, 9], [9, 6], [6, 2]])
   end
 end
-
-# The generator are created by generating a random five digit number, like 02715, and splitting it up like so:
-#
-# A key: first two digits (02)
-# B key: second and third digits (27)
-# C key: third and fourth digits (71)
-# D key: fourth and fifth digits (15)
