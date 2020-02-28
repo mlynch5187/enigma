@@ -4,7 +4,7 @@ class Enigma
   attr_reader :date
 
   def initialize()
-    @date = Time.now.strftime("%m/%d/%Y")
+    @date = Time.now.strftime("%d/%m/%Y")
   end
 
   def encrypt(message, key = nil, date = nil)
