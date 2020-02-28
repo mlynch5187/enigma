@@ -17,7 +17,12 @@ class EnigmaTest < MiniTest::Test
     assert_instance_of Hash, @enigma.encrypt("hello world", "02715", "040895")
   end
 
+  def test_date_is_generated
+    assert_equal "270220", @enigma.stubs(:date).returns("270220")
+  end
+
   def test_messages_can_be_encrypted_with_a_key
+    skip
     assert_equal ({:encryption => "keder ohulw", :key => "02715"}), @enigma.encrypt("hello world", "02715")
   end
 
