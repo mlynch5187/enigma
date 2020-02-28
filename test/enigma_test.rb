@@ -23,10 +23,6 @@ class EnigmaTest < MiniTest::Test
     assert_equal ({:encryption => "keder ohulw", :key => "02715"}), @enigma.encrypt("hello world", "02715")
   end
 
-  # encrypt a message with a key (uses today's date)
-  # pry(main)> encrypted = enigma.encrypt("hello world", "02715")
-  # #=> # encryption hash here
-
   def test_messages_can_be_encrypted
     skip
     expected = {encryption: "keder ohulw", key: "02715", date: "040895"}
