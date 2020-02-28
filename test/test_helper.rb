@@ -1,4 +1,6 @@
 require 'simplecov'
+require 'mocha'
+require 'date'
 
 SimpleCov.start do
 

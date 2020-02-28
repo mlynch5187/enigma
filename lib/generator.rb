@@ -1,4 +1,4 @@
-class Keys
+class Generator
 
   def initialize()
     @random_keys = []
