@@ -26,9 +26,9 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_random_five_digit_number_can_be_generated
-    @enigma.stubs(:generate_keys).returns([3, 4, 9, 6, 2])
+    @enigma.stubs(:generate_keys).returns([0, 2, 7, 1, 5])
 
-    assert_equal [3, 4, 9, 6, 2], @enigma.generate_keys
+    assert_equal [0, 2, 7, 1, 5], @enigma.generate_keys
   end
 
   def test_keys_can_be_split
