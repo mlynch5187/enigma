@@ -29,14 +29,14 @@ class Enigma
     @b_offset = []
     @c_offset = []
     @d_offset = []
-    @a_final_shift = []
-    @b_final_shift = []
-    @c_final_shift = []
-    @d_final_shift = []
+    @a_final_shift = 0
+    @b_final_shift = 0
+    @c_final_shift = 0
+    @d_final_shift = 0
     @letter_set = ("a".."z").to_a << " "
   end
 
-  def split_keys(keys = generated_keys.to_i)
+  def split_keys(keys = generated_keys)
     @a_key << (keys.chars[0..1].join).to_i
     @b_key << (keys.chars[1..2].join).to_i
     @c_key << (keys.chars[2..3].join).to_i
@@ -70,11 +70,27 @@ class Enigma
     generate_sample
   end
 
-  def encrypt(message, key = nil, date = squared_date)
+  def encrypt(message, key = nil, date = square_date)
     encrypted_message = {}
+
+    split_keys(key)
+    square_date
+    last_four_digits
+    offset
+    final_shift
 
     if message != nil
       encrypted_message[:encryption] = message
+
+      # message[0] = letter_set[@a_final_shift]
+      # message[1] = letter_set[@b_final_shift]
+      # message[2] = letter_set[@c_final_shift]
+      # message[3] = letter_set[@d_final_shift]
+
+      message.length.times do
+        require "pry"; binding.pry
+        final_shift
+      end
     end
 
     if key != nil

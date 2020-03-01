@@ -73,7 +73,10 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_messages_can_be_encrypted_with_a_key
-    skip
+    @enigma.split_keys("02715")
+    @enigma.offset
+    @enigma.final_shift
+
     assert_equal ({:encryption => "keder ohulw", :key => "02715"}), @enigma.encrypt("hello world", "02715")
   end
 
