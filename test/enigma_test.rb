@@ -14,9 +14,9 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_date_is_generated
-    @enigma.stubs(:date).returns("270220")
+    Time.stubs(:now).returns(Time.new("29022020"))
 
-    assert_equal "270220", @enigma.date
+    assert_equal "29022020", @enigma.date
   end
 
   def test_letter_set_is_created
@@ -26,7 +26,7 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_random_five_digit_number_can_be_generated
-    @enigma.stubs(:generate_keys).returns([0, 2, 7, 1, 5])
+    @enigma.stubs(:generate_sample).returns([0, 2, 7, 1, 5])
 
     assert_equal [0, 2, 7, 1, 5], @enigma.generate_keys
   end
@@ -47,7 +47,7 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_date_can_be_squared
-    assert_equal 1, @enigma.square_date
+    assert_equal 842277644880400, @enigma.square_date
   end
 
   def test_messages_can_be_encrypted_with_a_key
