@@ -4,7 +4,16 @@ class Enigma
   include Generator
   extend Generator
 
-  attr_reader :date, :letter_set, :a_key, :b_key, :c_key, :d_key
+  attr_reader :date,
+              :letter_set, 
+              :a_key, 
+              :b_key, 
+              :c_key, 
+              :d_key, 
+              :a_offset, 
+              :b_offset, 
+              :c_offset, 
+              :d_offset
 
   def initialize()
     @date = Time.now.strftime("%d%m%Y")
@@ -12,6 +21,10 @@ class Enigma
     @b_key = []
     @c_key = []
     @d_key = []
+    @a_offset = []
+    @b_offset = []
+    @c_offset = []
+    @d_offset = []
     @letter_set = ("a".."z").to_a << " "
   end
 
@@ -22,6 +35,13 @@ class Enigma
 
   def last_four_digits
     square_date.to_s[-4,4].chars
+  end
+
+  def offset
+    @a_offset << last_four_digits[0].to_i
+    @b_offset << last_four_digits[1].to_i
+    @c_offset << last_four_digits[2].to_i
+    @d_offset << last_four_digits[3].to_i
   end
 
   def generated_keys

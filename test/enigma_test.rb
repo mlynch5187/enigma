@@ -46,11 +46,19 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_date_can_be_squared_return_last_four_digits
-    skip
-    Time.stubs(:now).returns(Time.new("29022020"))
+    # Time.stubs(:now).returns(Time.new("29022020"))
 
-    assert_equal 842277644880400, @enigma.square_date
+    # assert_equal 842277644880400, @enigma.square_date
     assert_equal ["0", "4", "0", "0"], @enigma.last_four_digits
+  end
+
+  def test_last_four_digits_are_being_set_to_offsets
+    @enigma.offset
+    
+    assert_equal [0], @enigma.a_offset
+    assert_equal [4], @enigma.b_offset
+    assert_equal [0], @enigma.c_offset
+    assert_equal [0], @enigma.d_offset
   end
 
   def test_messages_can_be_encrypted_with_a_key
