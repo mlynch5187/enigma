@@ -4,7 +4,20 @@ class Enigma
   include Generator
   extend Generator
 
-  attr_reader :date, :letter_set, :a_key, :b_key, :c_key, :d_key
+  attr_reader :date,
+              :letter_set,
+              :a_key,
+              :b_key,
+              :c_key,
+              :d_key,
+              :a_offset,
+              :b_offset,
+              :c_offset,
+              :d_offset,
+              :a_final_shift,
+              :b_final_shift,
+              :c_final_shift,
+              :d_final_shift
 
   def initialize()
     @date = Time.now.strftime("%d%m%Y")
@@ -12,7 +25,22 @@ class Enigma
     @b_key = []
     @c_key = []
     @d_key = []
+    @a_offset = []
+    @b_offset = []
+    @c_offset = []
+    @d_offset = []
+    @a_final_shift = []
+    @b_final_shift = []
+    @c_final_shift = []
+    @d_final_shift = []
     @letter_set = ("a".."z").to_a << " "
+  end
+
+  def split_keys(keys = generated_keys.to_i)
+    @a_key << (keys.chars[0..1].join).to_i
+    @b_key << (keys.chars[1..2].join).to_i
+    @c_key << (keys.chars[2..3].join).to_i
+    @d_key << (keys.chars[3..4].join).to_i
   end
 
   def square_date
@@ -24,21 +52,22 @@ class Enigma
     square_date.to_s[-4,4].chars
   end
 
-  def generate_keys
-    generate_sample
+  def offset
+    @a_offset << last_four_digits[0].to_i
+    @b_offset << last_four_digits[1].to_i
+    @c_offset << last_four_digits[2].to_i
+    @d_offset << last_four_digits[3].to_i
   end
 
-  def split_keys
-    generated_keys = generate_keys
-    key_hash = {}
-    key_hash[a_key] = generated_keys[0..1]
+  def final_shift
+    @a_final_shift = (@a_key + @a_offset).sum
+    @b_final_shift = (@b_key + @b_offset).sum
+    @c_final_shift = (@c_key + @c_offset).sum
+    @d_final_shift = (@d_key + @d_offset).sum
+  end
 
-
-
-    # @a_key << generated_keys[0..1]
-    # @b_key << generated_keys[1..2]
-    # @c_key << generated_keys[2..3]
-    # @d_key << generated_keys[3..4]
+  def generated_keys
+    generate_sample
   end
 
   def encrypt(message, key = nil, date = squared_date)
