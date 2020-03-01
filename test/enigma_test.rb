@@ -13,11 +13,46 @@ class EnigmaTest < MiniTest::Test
     assert_instance_of Enigma, @enigma
   end
 
+  def test_date_is_generated
+    Time.stubs(:now).returns(Time.new("29022020"))
+
+    assert_equal "29022020", @enigma.date
+  end
+
+  def test_letter_set_is_created
+    expected = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
+
+    assert_equal expected, @enigma.letter_set
+  end
+
+  def test_random_five_digit_number_can_be_generated
+    @enigma.stubs(:generate_sample).returns([0, 2, 7, 1, 5])
+
+    assert_equal [0, 2, 7, 1, 5], @enigma.generate_keys
+  end
+
+  def test_keys_can_be_split
+    skip
+    @enigma.split_keys
+
+    assert_equal [], @enigma.a_key
+    assert_equal [], @enigma.b_key
+    assert_equal [], @enigma.c_key
+    assert_equal [], @enigma.d_key
+    # assert_equal [[3,4], [4, 9], [9, 6], [6, 2]], @generator.stubs(:split_keys).returns([[3,4], [4, 9], [9, 6], [6, 2]])
+  end
+
   def test_encrpyt_returns_a_hash
     assert_instance_of Hash, @enigma.encrypt("hello world", "02715", "040895")
   end
 
+  def test_date_can_be_squared_return_last_four_digits
+    assert_equal 842277644880400, @enigma.square_date
+    assert_equal ["0", "4", "0", "0"], @enigma.last_four_digits
+  end
+
   def test_messages_can_be_encrypted_with_a_key
+    skip
     assert_equal ({:encryption => "keder ohulw", :key => "02715"}), @enigma.encrypt("hello world", "02715")
   end
 
