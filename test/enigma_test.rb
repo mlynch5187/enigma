@@ -54,11 +54,22 @@ class EnigmaTest < MiniTest::Test
 
   def test_last_four_digits_are_being_set_to_offsets
     @enigma.offset
-    
+
     assert_equal [0], @enigma.a_offset
     assert_equal [4], @enigma.b_offset
     assert_equal [0], @enigma.c_offset
     assert_equal [0], @enigma.d_offset
+  end
+
+  def test_final_shift
+    @enigma.split_keys("02715")
+    @enigma.offset
+    @enigma.final_shift
+
+    assert_equal 2,  @enigma.a_final_shift
+    assert_equal 31, @enigma.b_final_shift
+    assert_equal 71, @enigma.c_final_shift
+    assert_equal 15, @enigma.d_final_shift
   end
 
   def test_messages_can_be_encrypted_with_a_key
