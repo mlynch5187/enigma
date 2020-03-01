@@ -24,22 +24,21 @@ class Enigma
     square_date.to_s[-4,4].chars
   end
 
-  def generate_keys
+  def generated_keys
     generate_sample
   end
 
-  def split_keys
-    generated_keys = generate_keys
-    key_hash = {}
-    key_hash[a_key] = generated_keys[0..1]
+  def split_keys(keys = generated_keys, date = nil)
+    # generated_keys = generate_keys
+    # key_hash = {}
+    # key_hash[a_key] = generated_keys[0..1]
 
-
-
-    # @a_key << generated_keys[0..1]
-    # @b_key << generated_keys[1..2]
-    # @c_key << generated_keys[2..3]
-    # @d_key << generated_keys[3..4]
+    @a_key << keys.chars[0..1].join
+    @b_key << keys.chars[1..2].join
+    @c_key << keys.chars[2..3].join
+    @d_key << keys.chars[3..4].join
   end
+
 
   def encrypt(message, key = nil, date = squared_date)
     encrypted_message = {}

@@ -28,18 +28,16 @@ class EnigmaTest < MiniTest::Test
   def test_random_five_digit_number_can_be_generated
     @enigma.stubs(:generate_sample).returns([0, 2, 7, 1, 5])
 
-    assert_equal [0, 2, 7, 1, 5], @enigma.generate_keys
+    assert_equal [0, 2, 7, 1, 5], @enigma.generated_keys
   end
 
   def test_keys_can_be_split
-    skip
-    @enigma.split_keys
+    @enigma.split_keys("32321")
 
-    assert_equal [], @enigma.a_key
-    assert_equal [], @enigma.b_key
-    assert_equal [], @enigma.c_key
-    assert_equal [], @enigma.d_key
-    # assert_equal [[3,4], [4, 9], [9, 6], [6, 2]], @generator.stubs(:split_keys).returns([[3,4], [4, 9], [9, 6], [6, 2]])
+    assert_equal [02], @enigma.a_key
+    assert_equal [27], @enigma.b_key
+    assert_equal [71], @enigma.c_key
+    assert_equal [15], @enigma.d_key
   end
 
   def test_encrpyt_returns_a_hash
