@@ -17,10 +17,12 @@ class Enigma
 
   def square_date
     date_as_integer = @date.to_i
-    squared_date = date_as_integer *= date_as_integer
+    date_as_integer *= date_as_integer
   end
 
-  # xy.to_s[-4,4].chars
+  def last_four_digits
+    square_date.to_s[-4,4].chars
+  end
 
   def generate_keys
     generate_sample
