@@ -5,7 +5,7 @@ require './lib/generator'
 class GeneratorTest < MiniTest::Test
 
   def setup
-    @generator = Generator.new
+    # @generator = Generator.new
     # @generator_1 = mock("Generator 1")
   end
 

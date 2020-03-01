@@ -28,17 +28,17 @@ class Enigma
     generate_sample
   end
 
-  def split_keys(keys = generated_keys, date = nil)
-    # generated_keys = generate_keys
-    # key_hash = {}
-    # key_hash[a_key] = generated_keys[0..1]
+  def split_keys(keys = generated_keys.to_i)
+    @a_key << (keys.chars[0..1].join).to_i
+    @b_key << (keys.chars[1..2].join).to_i
+    @c_key << (keys.chars[2..3].join).to_i
+    @d_key << (keys.chars[3..4].join).to_i
 
-    @a_key << keys.chars[0..1].join
-    @b_key << keys.chars[1..2].join
-    @c_key << keys.chars[2..3].join
-    @d_key << keys.chars[3..4].join
+    @a_key.map(&:to_i)
+    @b_key.map(&:to_i)
+    @c_key.map(&:to_i)
+    @d_key.map(&:to_i)
   end
-
 
   def encrypt(message, key = nil, date = squared_date)
     encrypted_message = {}
