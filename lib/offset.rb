@@ -9,8 +9,8 @@ class Offset
   end
 
   def split_keys
-    key.split(//).each_cons(2) {|number| @split_keys << number.join}
-    @split_keys.map {|key| key.to_i}
+    key.split(//).each_cons(2) { |number| @split_keys << number.join }
+    @split_keys.map { |key| key.to_i }
   end
 
   def square_date
@@ -19,7 +19,7 @@ class Offset
 
   def offset_date
     string_offset_date = square_date[-4..-1].split(//)
-    string_offset_date.map {|number| number.to_i}
+    string_offset_date.map { |number| number.to_i }
   end
 
   def final_offset
