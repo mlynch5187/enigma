@@ -39,6 +39,10 @@ class OffsetTest < MiniTest::Test
     assert_equal [0, 4, 0, 0], @offset.offset_date
   end
 
+  def test_keys_can_be_properly_offset
+    @offset.stubs(:date => "03022020")
+    @offset.stubs(:key => "02715")
 
-
+    assert_equal [2, 31, 71, 15], @offset.final_offset
+  end
 end
