@@ -1,4 +1,4 @@
-require './lib/generator.rb'
+require './lib/generator'
 
 class Enigma
   include Generator
@@ -82,14 +82,18 @@ class Enigma
     if message != nil
       encrypted_message[:encryption] = message
 
-      # message[0] = letter_set[@a_final_shift]
-      # message[1] = letter_set[@b_final_shift]
-      # message[2] = letter_set[@c_final_shift]
-      # message[3] = letter_set[@d_final_shift]
-
       message.length.times do
-        require "pry"; binding.pry
-        final_shift
+
+        letter = letter_set.find do |letter|
+          letter.include?(message[0]) == true
+        end
+
+        letter_index = letter_set.index(letter)
+        spaces_to_shift = letter_index + a_final_shift
+
+        # message[0] = letter_set[spaces_to_shift]
+        # require "pry"; binding.pry
+        # message[0]
       end
     end
 
