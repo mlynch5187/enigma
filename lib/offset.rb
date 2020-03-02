@@ -12,4 +12,7 @@ class Offset
     @split_keys.map {|key| key.to_i}
   end
 
+  def square_date
+    (date.to_i ** 2).to_s
+  end
 end

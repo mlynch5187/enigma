@@ -21,10 +21,16 @@ class OffsetTest < MiniTest::Test
     skip
   end
 
-  def test_keys_are_being_split_into_sets
+  def test_keys_are_being_split_into_array_indexes_of_integers
     @offset.stubs(:key => "09134")
 
     assert_equal [9, 91, 13, 34], @offset.split_keys
+  end
+
+  def test_date_can_be_squared
+    @offset.stubs(:date => "03022020")
+
+    assert_equal "9132604880400", @offset.square_date
   end
 
 
