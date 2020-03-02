@@ -1,95 +1,37 @@
-require './test/test_helper'
+require_relative 'test_helper'
+require 'date'
 require './lib/enigma'
 
-class EnigmaTest < MiniTest::Test
+class EngimaTest < MiniTest::Test
 
   def setup
     @enigma = Enigma.new
-    @enigma.encrypt("hello world", "02715", "040895")
-    # @enigma.decrypt("keder ohulw", "02715", "040895")
   end
 
-  def test_enigma_exists
+  def test_it_exists
     assert_instance_of Enigma, @enigma
   end
 
-  def test_date_is_generated
-    skip
-    Date.today.stubs(:now).returns(Time.new("29022020"))
-
-    assert_equal "29022020", @enigma.date
-  end
-
-  def test_encrpyt_returns_a_hash
-    assert_instance_of Hash, @enigma.encrypt("hello world", "02715", "040895")
-  end
-
-  def test_date_can_be_squared_return_last_four_digits
-    # Time.stubs(:now).returns(Time.new("29022020"))
-
-    # assert_equal 842277644880400, @enigma.square_date
-    assert_equal ["0", "4", "0", "0"], @enigma.last_four_digits
-  end
-
-  def test_keys_can_be_split
-    assert_equal [02], @enigma.a_key
-    assert_equal [27], @enigma.b_key
-    assert_equal [71], @enigma.c_key
-    assert_equal [15], @enigma.d_key
-  end
-
-  def test_letter_set_is_created
-    expected = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
-
-    assert_equal expected, @enigma.letter_set
-  end
-
-  def test_random_five_digit_number_can_be_generated
-    @enigma.stubs(:generate_sample).returns([0, 2, 7, 1, 5])
-
-    assert_equal [0, 2, 7, 1, 5], @enigma.generated_keys
-  end
-
-  def test_last_four_digits_are_being_set_to_offsets
-    assert_equal [0], @enigma.a_offset
-    assert_equal [4], @enigma.b_offset
-    assert_equal [0], @enigma.c_offset
-    assert_equal [0], @enigma.d_offset
-  end
-
-  def test_final_shift
-    assert_equal 2,  @enigma.a_final_shift
-    assert_equal 31, @enigma.b_final_shift
-    assert_equal 71, @enigma.c_final_shift
-    assert_equal 15, @enigma.d_final_shift
-    # assert_equal [2, 31, 71, 15], @enigma.final_shift_keys
-  end
-
-  def test_messages_can_be_encrypted_with_a_key
-    skip
-
-    assert_equal ({:encryption => "keder ohulw", :key => "02715"}), @enigma.encrypt("hello world", "02715")
-  end
-
-  def test_messages_can_be_encrypted
+  def test_enigma_can_encrypt_message_with_key_and_date
     skip
     expected = {encryption: "keder ohulw", key: "02715", date: "040895"}
-
     assert_equal expected, @enigma.encrypt("hello world", "02715", "040895")
   end
 
-  def test_messages_can_be_decrypted
+  def test_enigma_can_encrypt_massage_with_key_and_todays_date
+    skip
+    expected = {encryption: "nib udmcxpu", key: "02715", date: "03022020"}
+    assert_equal expected, @enigma.encrypt("hello world", "02715")
+  end
+
+  def test_enigma_can_decrypt_message_with_key_and_date
     skip
     expected = {decryption: "hello world", key: "02715", date: "040895"}
-
     assert_equal expected, @enigma.decrypt("keder ohulw", "02715", "040895")
   end
-end
 
-# #decrypt a message with a key (uses today's date)
-# pry(main) > enigma.decrypt(encrypted[:encryption], "02715")
-# #=> # decryption hash here
-#
-# # encrypt a message (generates random key and uses today's date)
-# pry(main)> enigma.encrypt("hello world")
-# #=> # encryption hash here
+  def test_enigma_can_decrypt_message_with_key_and_todays_date
+    skip
+  end
+
+end

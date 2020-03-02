@@ -1,10 +1,5 @@
 require 'simplecov'
-require 'date'
-
-SimpleCov.start do
-
-end
-
+SimpleCov.start
 require 'minitest/autorun'
 require 'minitest/pride'
 require 'mocha/minitest'

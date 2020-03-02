@@ -1,48 +1,48 @@
-require './test/test_helper'
-require './lib/enigma'
-require './lib/keys'
+require_relative 'test_helper'
+require 'date'
 require './lib/offset'
 
 class OffsetTest < MiniTest::Test
 
   def setup
     @offset = Offset.new
-    @enigma = Enigma.new
-    @enigma.encrypt("hello world", "02715", "040895")
   end
 
   def test_offset_exists
     assert_instance_of Offset, @offset
   end
 
-  def test_date_is_generated
-    Date.today.stubs(:now).returns(Time.new("03032020"))
+  def test_offsets_are_strings
+    assert_equal String, @offset.date.class
+    assert_equal String, @offset.key.class
+  end
 
-    assert_equal "03032020", @enigma.date
+  def test_random_keys_are_generated
+    skip
+  end
+
+  def test_keys_are_being_split_into_array_indexes_of_integers
+    @offset.stubs(:key => "09134")
+
+    assert_equal [9, 91, 13, 34], @offset.split_keys
   end
 
   def test_date_can_be_squared
-    assert_equal 9193145280400, @offset.square_date
+    @offset.stubs(:date => "03022020")
+
+    assert_equal "9132604880400", @offset.square_date
   end
 
-  def test_last_four_digits_are_returned
-    assert_equal ["0", "4", "0", "0"], @enigma.last_four_digits
+  def test_date_can_be_offset
+    @offset.stubs(:date => "03022020")
+
+    assert_equal [0, 4, 0, 0], @offset.offset_date
   end
 
-  def test_last_four_digits_are_being_set_to_offsets
-    @offset.offset
+  def test_keys_can_be_properly_offset
+    @offset.stubs(:date => "03022020")
+    @offset.stubs(:key => "02715")
 
-    assert_equal [0], @offset.a_offset
-    assert_equal [4], @offset.b_offset
-    assert_equal [0], @offset.c_offset
-    assert_equal [0], @offset.d_offset
+    assert_equal [2, 31, 71, 15], @offset.final_offset
   end
-
-  def test_final_shift
-    assert_equal 2,  @enigma.a_final_shift
-    assert_equal 31, @enigma.b_final_shift
-    assert_equal 71, @enigma.c_final_shift
-    assert_equal 15, @enigma.d_final_shift
-  end
-
 end
