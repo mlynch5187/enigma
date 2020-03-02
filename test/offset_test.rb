@@ -15,10 +15,17 @@ class OffsetTest < MiniTest::Test
     assert_instance_of Offset, @offset
   end
 
-  def test_last_four_digits_are_returned
-    # Time.stubs(:now).returns(Time.new("29022020"))
+  def test_date_is_generated
+    Date.today.stubs(:now).returns(Time.new("03032020"))
 
-    # assert_equal 842277644880400, @enigma.square_date
+    assert_equal "03032020", @enigma.date
+  end
+
+  def test_date_can_be_squared
+    assert_equal 9193145280400, @offset.square_date
+  end
+
+  def test_last_four_digits_are_returned
     assert_equal ["0", "4", "0", "0"], @enigma.last_four_digits
   end
 

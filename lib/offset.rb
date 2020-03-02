@@ -13,7 +13,6 @@ class Offset
               :c_final_shift,
               :d_final_shift
 
-
   def initialize()
     @date = Time.now.strftime("%d%m%Y")
     @a_offset = []
