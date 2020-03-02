@@ -1,6 +1,7 @@
 require_relative 'test_helper'
 require 'date'
 require './lib/enigma'
+require './lib/offset'
 
 class EngimaTest < MiniTest::Test
 
@@ -18,8 +19,7 @@ class EngimaTest < MiniTest::Test
   end
 
   def test_enigma_can_encrypt_massage_with_key_and_todays_date
-    skip
-    expected = {encryption: "nib udmcxpu", key: "02715", date: "03022020"}
+    expected = {encryption: "lib sdmcvpu", key: "02715", date: "03022020"}
     assert_equal expected, @enigma.encrypt("hello world", "02715")
   end
 

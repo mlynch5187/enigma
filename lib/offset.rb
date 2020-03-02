@@ -1,7 +1,7 @@
 class Offset
   attr_reader :key, :date, :split_keys, :offset_keys
 
-  def initialize(key = 5.times.map {rand(0..9)}.join, date = Time.now.strftime("%d%m%y"))
+  def initialize(key = 5.times.map {rand(0..9)}.join, date =  Date.today.strftime("%d%m%y"))
     @key = key
     @date = date
     @split_keys = []

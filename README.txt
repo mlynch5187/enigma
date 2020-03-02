@@ -1,3 +1,24 @@
+Self Evaluation
+
+
+Functionality -
+
+OOP -
+
+Ruby Conventions/Mechanics -
+
+TDD -
+
+
+
+
+
+
+
+
+
+
+
 Classes
 
 Enigma - parent class?, runner file
