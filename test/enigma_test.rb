@@ -13,18 +13,25 @@ class EngimaTest < MiniTest::Test
   end
 
   def test_enigma_can_encrypt_message_with_key_and_date
+    skip
     expected = {encryption: "keder ohulw", key: "02715", date: "040895"}
     assert_equal expected, @enigma.encrypt("hello world", "02715", "040895")
   end
 
   def test_enigma_can_encrypt_massage_with_key_and_todays_date
+    skip
     expected = {encryption: "nib udmcxpu", key: "02715", date: "03022020"}
     assert_equal expected, @enigma.encrypt("hello world", "02715")
   end
 
-  def test_can_decrypt_message_with_key_and_date
+  def test_enigma_can_decrypt_message_with_key_and_date
+    skip
     expected = {decryption: "hello world", key: "02715", date: "040895"}
     assert_equal expected, @enigma.decrypt("keder ohulw", "02715", "040895")
+  end
+
+  def test_enigma_can_decrypt_message_with_key_and_todays_date
+    skip
   end
 
 end
