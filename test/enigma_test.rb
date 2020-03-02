@@ -12,14 +12,19 @@ class EngimaTest < MiniTest::Test
     assert_instance_of Enigma, @enigma
   end
 
-  def test_can_encrypt_message_with_key_and_date
+  def test_enigma_can_encrypt_message_with_key_and_date
     expected = {encryption: "keder ohulw", key: "02715", date: "040895"}
     assert_equal expected, @enigma.encrypt("hello world", "02715", "040895")
   end
 
-  def test_can_encrypt_message_with_key_and_date_and_special_char
-    expected = {encryption: "keder, ohulw", key: "02715", date: "040895"}
-    assert_equal expected, @enigma.encrypt("hello, world", "02715", "040895")
+  def test_enigma_can_encrypt_massage_with_key_and_todays_date
+    expected = {encryption: "nib udmcxpu", key: "02715", date: "03022020"}
+    assert_equal expected, @enigma.encrypt("hello world", "02715")
+  end
+
+  def test_can_decrypt_message_with_key_and_date
+    expected = {decryption: "hello world", key: "02715", date: "040895"}
+    assert_equal expected, @enigma.decrypt("keder ohulw", "02715", "040895")
   end
 
 end
