@@ -6,4 +6,8 @@ class Offset
     @date = date
   end
 
+  def split_keys
+    
+  end
+
 end
