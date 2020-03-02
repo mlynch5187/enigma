@@ -17,6 +17,7 @@ class Offset
   end
 
   def offset_date
-    square_date[-4..-1].split(//)
+    string_offset_date = square_date[-4..-1].split(//)
+    string_offset_date.map {|number| number.to_i}
   end
 end

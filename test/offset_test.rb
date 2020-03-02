@@ -36,7 +36,7 @@ class OffsetTest < MiniTest::Test
   def test_date_can_be_offset
     @offset.stubs(:date => "03022020")
 
-    assert_equal ["0", "4", "0", "0"], @offset.offset_date
+    assert_equal [0, 4, 0, 0], @offset.offset_date
   end
 
 
