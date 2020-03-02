@@ -15,4 +15,8 @@ class Offset
   def square_date
     (date.to_i ** 2).to_s
   end
+
+  def offset_date
+    square_date[-4..-1].split(//)
+  end
 end
