@@ -20,6 +20,24 @@ class EnigmaTest < MiniTest::Test
     assert_equal "29022020", @enigma.date
   end
 
+  def test_encrpyt_returns_a_hash
+    assert_instance_of Hash, @enigma.encrypt("hello world", "02715", "040895")
+  end
+
+  def test_date_can_be_squared_return_last_four_digits
+    # Time.stubs(:now).returns(Time.new("29022020"))
+
+    # assert_equal 842277644880400, @enigma.square_date
+    assert_equal ["0", "4", "0", "0"], @enigma.last_four_digits
+  end
+
+  def test_keys_can_be_split
+    assert_equal [02], @enigma.a_key
+    assert_equal [27], @enigma.b_key
+    assert_equal [71], @enigma.c_key
+    assert_equal [15], @enigma.d_key
+  end
+
   def test_letter_set_is_created
     expected = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
 
@@ -32,29 +50,7 @@ class EnigmaTest < MiniTest::Test
     assert_equal [0, 2, 7, 1, 5], @enigma.generated_keys
   end
 
-  def test_keys_can_be_split
-    @enigma.split_keys("02715")
-
-    assert_equal [02], @enigma.a_key
-    assert_equal [27], @enigma.b_key
-    assert_equal [71], @enigma.c_key
-    assert_equal [15], @enigma.d_key
-  end
-
-  def test_encrpyt_returns_a_hash
-    assert_instance_of Hash, @enigma.encrypt("hello world", "02715", "040895")
-  end
-
-  def test_date_can_be_squared_return_last_four_digits
-    # Time.stubs(:now).returns(Time.new("29022020"))
-
-    # assert_equal 842277644880400, @enigma.square_date
-    assert_equal ["0", "4", "0", "0"], @enigma.last_four_digits
-  end
-
   def test_last_four_digits_are_being_set_to_offsets
-    @enigma.offset
-
     assert_equal [0], @enigma.a_offset
     assert_equal [4], @enigma.b_offset
     assert_equal [0], @enigma.c_offset
@@ -62,20 +58,15 @@ class EnigmaTest < MiniTest::Test
   end
 
   def test_final_shift
-    @enigma.split_keys("02715")
-    @enigma.offset
-    @enigma.final_shift
-
     assert_equal 2,  @enigma.a_final_shift
     assert_equal 31, @enigma.b_final_shift
     assert_equal 71, @enigma.c_final_shift
     assert_equal 15, @enigma.d_final_shift
+    # assert_equal [2, 31, 71, 15], @enigma.final_shift_keys
   end
 
   def test_messages_can_be_encrypted_with_a_key
-    @enigma.split_keys("02715")
-    @enigma.offset
-    @enigma.final_shift
+    skip
 
     assert_equal ({:encryption => "keder ohulw", :key => "02715"}), @enigma.encrypt("hello world", "02715")
   end
