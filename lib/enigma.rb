@@ -1,4 +1,8 @@
+require './lib/generator'
+
 class Enigma
+  include Generator
+
   attr_reader :encrypted_message
 
   def initialize()
@@ -8,8 +12,7 @@ class Enigma
     @decrypted_key = {}
   end
 
-  def encrypt(message, key = 5.times.map {rand(0..9)}.join, date = Time.now.strftime("%d%m%y"))
-    letter_set = ("a".."z").to_a << " "
+  def encrypt(message, key = encode, date = todays_date)
     split_message = message.downcase.split(//)
     offset = Offset.new(key,date).final_offset
 
@@ -28,8 +31,7 @@ class Enigma
     @encrypted_key
   end
 
-  def decrypt(encrypted_message, key, date = Time.now.strftime("%d%m%y"))
-    letter_set = ("a".."z").to_a << " "
+  def decrypt(encrypted_message, key, date = todays_date)
     encrypted_message = encrypted_message.downcase.split(//)
     offset = Offset.new(key,date).final_offset
 
