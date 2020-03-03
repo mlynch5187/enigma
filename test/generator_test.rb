@@ -4,6 +4,12 @@ require './lib/generator'
 class GeneratorTest < MiniTest::Test
   include Generator
 
+  def test_todays_date_is_returned
+    Time.stubs(:now).returns(Time.mktime(2020,1,1))
+
+    assert_equal "010120", todays_date
+  end
+
   def test_alphabet_is_generated
     expected = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
     assert_equal expected, letter_set
@@ -22,6 +28,5 @@ class GeneratorTest < MiniTest::Test
     assert_equal true, first_number != second_number
     assert_equal true, first_number != third_number
     assert_equal true, second_number != third_number
-    assert_equal false, third_number = fourth_number
   end
 end
