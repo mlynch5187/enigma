@@ -1,81 +1,22 @@
 Self Evaluation
 
 
-Functionality -
+Functionality - 2
 
-OOP -
+Although all tests are passing for encrypt and decrypt, and the command line interface works, I am unable to successfully
+decrypt and encrypted message through the command line. I am not sure if the decryption is not working correctly or if 
+I am running the command line incorrectly, considering that decryption testing is passing.
 
-Ruby Conventions/Mechanics -
+OOP - 3 
 
-TDD -
+The project is broken into two primary classes, the enigma and offset classes, and also includes a generator module.
+No class is unreasonably small or large, and each class and module has specific responsibilities. The enigma class' responsibilities include encrypting and decrypting, the offset class holds methods that deal with offsetting the message, keys and date which are used in the enigma methods, and the generator module holds three methods that generate todays date, a random set of five keys, and a set of 27 letters and a space.
 
+Ruby Conventions/Mechanics - 3
 
+Code is mostly properly indented and spaced, and lines are not excessively long. Enumerables chosen are effective for 
+their job, and I can speak to why I chose to use them or other data structures. Hashes are implemented in a logical manner in the encrypted_key and decrypted_key variables in the enigma class.
 
+TDD - 3
 
-
-
-
-
-
-
-
-Classes
-
-Enigma - parent class?, runner file
-
-  encrypt method: The encrypt method returns a hash with three keys:
-    Encrypt.new = {:key => "encrypted_string", :key => "key_used_for_encryption", :date => "MMDDYY"}
-
-    :encryption => the encrypted String
-    :key => the key used for encryption as a String
-    :date => the date used for encryption as a String in the form DDMMYY
-
-  decrypt method: The decrypt method returns a hash with three keys:
-    :decryption => the decrypted String
-    :key => the key used for decryption as a String
-    :date => the date used for decryption as a String in the form DDMMYY
-
-The Enigma class will respond to this interaction pattern:
-
-pry(main)> require 'date'
-#=> true
-
-pry(main)> require './lib/enigma'
-#=> true
-
-pry(main)> enigma = Enigma.new
-#=> #<Enigma:0x00007ff90f24cb78...>
-
-# encrypt a message with a key and date
-pry(main)> enigma.encrypt("hello world", "02715", "040895")
-#=>
-#   {
-#     encryption: "keder ohulw",
-#     key: "02715",
-#     date: "040895"
-#   }
-
-# decrypt a message with a key and date
-pry(main) > enigma.decrypt("keder ohulw", "02715", "040895")
-#=>
-#   {
-#     decryption: "hello world",
-#     key: "02715",
-#     date: "040895"
-#   }
-
-# encrypt a message with a key (uses today's date)
-pry(main)> encrypted = enigma.encrypt("hello world", "02715")
-#=> # encryption hash here
-
-#decrypt a message with a key (uses today's date)
-pry(main) > enigma.decrypt(encrypted[:encryption], "02715")
-#=> # decryption hash here
-
-# encrypt a message (generates random key and uses today's date)
-pry(main)> enigma.encrypt("hello world")
-#=> # encryption hash here
-
-Enigma as a runner file:
-  Takes two command line arguments:
-    existing file with message to encrypt
+Every method is tested at both the unit and integration level, and all tests are passing. Obvious edge cases are addressed, and my git history shows that tests were written before implementation code. Test coverage metrics between the three tests are nearing 100% coverage.
