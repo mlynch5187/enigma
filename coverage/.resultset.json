@@ -1,75 +1,26 @@
 {
   "Unit Tests": {
     "coverage": {
-      "/Users/michaelalexlynch/turing/1module/projects/enigma/lib/enigma.rb": {
+      "/Users/michaelalexlynch/turing/1module/projects/enigma/lib/generator.rb": {
         "lines": [
           1,
-          1,
           null,
           1,
-          5,
-          5,
-          null,
-          null,
-          1,
-          2,
-          2,
-          2,
-          null,
-          2,
-          22,
-          22,
-          22,
-          22,
-          null,
           0,
           null,
           null,
-          2,
-          2,
-          2,
-          2,
-          null,
-          null
-        ]
-      },
-      "/Users/michaelalexlynch/turing/1module/projects/enigma/lib/offset.rb": {
-        "lines": [
           1,
           1,
           null,
-          1,
-          2,
-          2,
-          2,
-          2,
-          null,
           null,
           1,
-          40,
-          88,
-          null,
-          null,
-          1,
-          8,
-          null,
-          null,
-          1,
-          8,
-          40,
-          null,
-          null,
-          1,
-          2,
-          2,
-          2,
-          2,
-          2,
+          4,
+          4,
           null,
           null
         ]
       }
     },
-    "timestamp": 1583191602
+    "timestamp": 1583203756
   }
 }

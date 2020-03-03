@@ -26,5 +26,4 @@ class GeneratorTest < MiniTest::Test
     assert_equal true, first_number != third_number
     assert_equal true, second_number != third_number
   end
-
 end
