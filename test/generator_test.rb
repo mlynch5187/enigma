@@ -17,4 +17,14 @@ class GeneratorTest < MiniTest::Test
     assert_equal 5, encode.length
   end
 
+  def test_five_digit_number_is_random
+    first_number = encode
+    second_number = encode
+    third_number = encode
+
+    assert_equal true, first_number != second_number
+    assert_equal true, first_number != third_number
+    assert_equal true, second_number != third_number
+  end
+
 end
