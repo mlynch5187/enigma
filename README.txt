@@ -1,11 +1,10 @@
 Self Evaluation
 
 
-Functionality - 2
+Functionality - 3
 
-Although all tests are passing for encrypt and decrypt, and the command line interface works for encrypting, I am unable to successfully
-run decryption through the command line. I am not sure if the decryption is not working correctly or if 
-I am running the command line incorrectly, considering that decryption testing is passing.
+All tests are passing in the project, and encryption, decryption and the CLI are all working.
+
 
 OOP - 3 
 
