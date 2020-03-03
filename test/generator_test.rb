@@ -17,9 +17,11 @@ class GeneratorTest < MiniTest::Test
     first_number = encode
     second_number = encode
     third_number = encode
+    fourth_number = encode
 
     assert_equal true, first_number != second_number
     assert_equal true, first_number != third_number
     assert_equal true, second_number != third_number
+    assert_equal false, third_number = fourth_number
   end
 end
