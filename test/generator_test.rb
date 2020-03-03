@@ -4,10 +4,6 @@ require './lib/generator'
 class GeneratorTest < MiniTest::Test
   include Generator
 
-  def test_todays_date_is_generated
-    skip
-  end
-
   def test_alphabet_is_generated
     expected = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
     assert_equal expected, letter_set
