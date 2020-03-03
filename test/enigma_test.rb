@@ -1,5 +1,4 @@
 require_relative 'test_helper'
-require 'date'
 require './lib/enigma'
 require './lib/offset'
 
