@@ -30,6 +30,6 @@ class EngimaTest < MiniTest::Test
 
   def test_enigma_can_decrypt_message_with_key_and_todays_date
     expected = {decryption: "hello world", key: "02715", date: "020320"}
-    assert_equal expected, @enigma.decrypt("keder ohulw", "02715")
+    assert_equal expected, @enigma.decrypt("lib sdmcvpu", "02715")
   end
 end
