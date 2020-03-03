@@ -3,6 +3,8 @@ require './lib/generator'
 class Enigma
   include Generator
 
+  attr_reader :encrypted_key, :decrypted_key
+
   def initialize()
     @encrypted_message = []
     @encrypted_key = {}
