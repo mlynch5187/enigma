@@ -1,5 +1,4 @@
 require_relative 'test_helper'
-require 'date'
 require './lib/offset'
 
 class OffsetTest < MiniTest::Test
@@ -15,10 +14,6 @@ class OffsetTest < MiniTest::Test
   def test_offsets_are_strings
     assert_equal String, @offset.date.class
     assert_equal String, @offset.key.class
-  end
-
-  def test_random_keys_are_generated
-    skip
   end
 
   def test_keys_are_being_split_into_array_indexes_of_integers
