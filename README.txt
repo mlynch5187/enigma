@@ -3,8 +3,8 @@ Self Evaluation
 
 Functionality - 2
 
-Although all tests are passing for encrypt and decrypt, and the command line interface works, I am unable to successfully
-decrypt and encrypted message through the command line. I am not sure if the decryption is not working correctly or if 
+Although all tests are passing for encrypt and decrypt, and the command line interface works for encrypting, I am unable to successfully
+run decryption through the command line. I am not sure if the decryption is not working correctly or if 
 I am running the command line incorrectly, considering that decryption testing is passing.
 
 OOP - 3 
