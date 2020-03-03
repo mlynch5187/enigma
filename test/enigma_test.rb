@@ -18,7 +18,7 @@ class EngimaTest < MiniTest::Test
   end
 
   def test_enigma_can_encrypt_massage_with_key_and_todays_date
-    expected = {encryption: "lib sdmcvpu", key: "02715", date: "020320"}
+    expected = {encryption: "lib sdmcvpu", key: "02715", date: "030320"}
     assert_equal expected, @enigma.encrypt("hello world", "02715")
   end
 
@@ -28,7 +28,7 @@ class EngimaTest < MiniTest::Test
   end
 
   def test_enigma_can_decrypt_message_with_key_and_todays_date
-    expected = {decryption: "hello world", key: "02715", date: "020320"}
+    expected = {decryption: "hello world", key: "02715", date: "030320"}
     assert_equal expected, @enigma.decrypt("lib sdmcvpu", "02715")
   end
 end
